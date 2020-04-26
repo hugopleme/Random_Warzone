@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <ctype.h>
+
+void linha(void){
+  printf("#######################\n");
+  return;
+}
+
+int main(void) {
+  int jogadores,i;
+  char nome[10][10];
+
+  printf("Numero de jogadores: ");
+  scanf("%d", &jogadores);
+  for (i=0;i<jogadores;i++){
+    printf("Nome do %dºjogador: ", i+1);
+    scanf("%s", nome[i]);
+    nome[i][0] = toupper(nome[i][0]);
+  }
+  linha();
+  printf("JOGADORES PARTICIPANDO:\n");
+  for(i=0;i<jogadores;i++){
+    printf("\t%s\n", nome[i]);
+  }
+
+
+  return 0;
+}
