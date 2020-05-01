@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <time.h>
+#include <stdlib.h>
+
+int sorteio(jogadores,i){
+  int sorteado;
+
+  srand(time(NULL));
+
+  sorteado=rand() % jogadores;
+
+  return sorteado;
+}
+
+void linha(void){
+  printf("#######################\n");
+  return;
+}
+
+void menu(void){
+  printf("-------MENU------\n");
+  printf("TRIOS = '1'\n");
+  printf("QUADS = '2'\n");
+  printf("Escolha uma opcao: ");
+}
+
+int main(void) {
+  int jogadores,i,jogador;
+  int opcao,cont;
+  char nome[10][10];
+  char sorteado[10][10];
+
+  linha();
+  menu();
+  scanf("%d", &opcao);
+  linha();
+
+  if (opcao==1){
+    printf("Numero de jogadores: ");
+    scanf("%d", &jogadores);
+    if (jogadores==3){
+      printf("N PRECISA SORTEAR NE O ARROMBADO\n");
+    }
+    else if (jogadores<3){
+      printf("NAO DA PRA JOGAR COM MENOS O MULA\n");
+    }
+    else{
+    for (i=0;i<jogadores;i++){
+      printf("Nome do %dº jogador: ", i+1);
+      scanf("%s", nome[i]);
+      nome[i][0] = toupper(nome[i][0]);
+    }
+    linha();
+    printf("JOGADORES PARTICIPANDO:\n");
+    for(i=0;i<jogadores;i++){
+      printf("\t%s\n", nome[i]);
+    }
+    linha();
+    }
+
+    sorteio(jogadores,i);
+    jogador=sorteio(jogadores, i);
+
+    for (cont=0;cont<3;cont++){
+      printf("O %dºjogador sorteado foi: %s \n", cont+1, nome[jogador]);
+      //sorteio(jogadores,i);
+      //jogador=sorteio(jogadores, i);
+      //sorteado[cont] = jogadores[jogador];
+    }
+  }
+
+
+  else if(opcao==2){
+  printf("Numero de jogadores: ");
+  scanf("%d", &jogadores);
+  for (i=0;i<jogadores;i++){
+    printf("Nome do %dº jogador: ", i+1);
+    scanf("%s", nome[i]);
+    nome[i][0] = toupper(nome[i][0]);
+  }
+  linha();
+  printf("JOGADORES PARTICIPANDO:\n");
+  for(i=0;i<jogadores;i++){
+    printf("\t%s\n", nome[i]);
+  }
+  linha();
+
+  sorteio(jogadores,i);
+  jogador=sorteio(jogadores, i);
+
+  printf("O jogador sorteado foi: %s ", nome[jogador]);
+  }
+  return 0;
+}
