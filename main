@@ -1,5 +1,21 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <time.h>
+#include <stdlib.h>
+
+int sorteio(jogadores,i){
+  //int j;
+  int sorteado;
+
+  srand(time(NULL));
+  
+  //for (i=0;i<1;i++){
+    //printf("%d ", rand() % jogadores);
+  sorteado=rand() % jogadores;
+  
+
+  return sorteado;
+}
 
 void linha(void){
   printf("#######################\n");
@@ -7,13 +23,13 @@ void linha(void){
 }
 
 int main(void) {
-  int jogadores,i;
+  int jogadores,i,jogador;
   char nome[10][10];
 
   printf("Numero de jogadores: ");
   scanf("%d", &jogadores);
   for (i=0;i<jogadores;i++){
-    printf("Nome do %dºjogador: ", i+1);
+    printf("Nome do %dº jogador: ", i+1);
     scanf("%s", nome[i]);
     nome[i][0] = toupper(nome[i][0]);
   }
@@ -22,7 +38,10 @@ int main(void) {
   for(i=0;i<jogadores;i++){
     printf("\t%s\n", nome[i]);
   }
+  linha();
 
-
+  sorteio(jogadores,i);
+  jogador=sorteio(jogadores, i);
+  printf("O jogador sorteado foi: %s ", nome[jogador]);
   return 0;
 }
